@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <!--
+      JavaScript GradeEvaluator
+
+      Author: M. Liliana Ignat
+      Date: 7/11/2017  
+
+      Filename: index.htm
+   -->
+   <meta charset="utf-8" />
+   <meta name="viewport" content="width=device-width,initial-scale=1.0">
+   <title>Grade Evaluator</title>
+   <link rel="stylesheet" href="styles.css" />
+   <script src="modernizr.custom.65897.js"></script>
+</head>
+
+<body alink="black" vlink="black" link="black">
+<center>
+
+<form name=GradeCalc action="">
+<h2>Average Calculator</h2>
+  <div id="dynamicInput">
+    Subject number 1<br><input type="text" name="myInputs[]"><br>
+    Subject number 2<br><input type="text" name="myInputs[]"><br>
+  </div>
+<input type="button" value="Add a subject" onClick="addInput('dynamicInput');">
+<input type="button" name="BtnCompute" onClick="avg('dynamicInput');" value="Compute Average">
+<script type="text/javascript">
+var counter = 2;
+var limit = 10;
+var sum=0;
+var average=0;
+
+function addInput(divName){
+     if (counter == limit)  {
+          alert("You have reached the limit of adding " + counter + " inputs");
+     }
+     else {
+
+          var newdiv = document.createElement('div');
+          newdiv.innerHTML = "Subject number " + (counter + 1) + " <br><input type='text' name='myInputs[]' >";
+          document.getElementById(divName).appendChild(newdiv);
+         counter++;
+     } 
+}
+	
+function avg(divName){
+for (var i = 0; i < counter; i++) {
+	sum += parseFloat(document.getElementsByName("myInputs[]")[i].value);
+  }
+  average = sum / counter;
+alert("Average is " + average + ". Please Shift refresh and start over"); 
+}
+</script>
+<table width="500" border="0" align="center" cellpadding="2" cellspacing="0">
+		
+	<!-- Row 1 -->
+	<tr bgcolor="#f5873c">
+	 <td colspan=3 align="center"><h2>GradeEvaluator</h2></td>
+	</tr>
+
+	<!-- Row 2 -->
+	<tr bgcolor="#f5873c">
+	 <td align="center">Categories</td>
+	 <td align="center">Average Grade for Category</td>
+	 <td align="center">Percentage of Course Grade</td>
+	</tr>
+
+	<!-- Row 3 -->
+	<tr bgcolor="#f5873c">
+	 <td align="center"><i>Example: Concept Tests</i></td>
+	 <td align="center"><i>93</i></td>
+	 <td align="center"><i>30</i></td>
+	</tr>
+
+	<!-- Row 4 -->
+	<tr bgcolor="#f5873c">
+	 <td align="center"><input size=15 name=ConceptTests defaultValue=""></td>
+	 <td align="center"><input size=5 name=Grade1 defaultValue=""></td>
+	 <td align="center"><input size=5 name=Percent1 defaultValue=""></td>
+	</tr>
+
+	<!-- Row 5 -->
+	<tr bgcolor="#f5873c">
+	 <td align="center"><input size=15 name=MindTapSAMTraining defaultValue=""></td>
+	 <td align="center"><input size=5 name=Grade2 defaultValue=""></td>
+	 <td align="center"><input size=5 name=Percent2 defaultValue=""></td>
+	</tr>
+
+	<!-- Row 6 -->
+	<tr bgcolor="#f5873c">
+	 <td align="center"><input size=15 name=Assignments defaultValue=""></td>
+	 <td align="center"><input size=5 name=Grade3 defaultValue=""></td>
+	 <td align="center"><input size=5 name=Percent3 defaultValue=""></td>
+	</tr>
+
+	<!-- Row 7 -->
+	<tr bgcolor="#f5873c">
+	 <td align="center"><input size=15 name=Attendance defaultValue=""></td>
+	 <td align="center"><input size=5 name=Grade4 defaultValue=""></td>
+	 <td align="center"><input size=5 name=Percent4 defaultValue=""></td>
+	</tr>
+
+	<!-- Row 8 -->
+	<tr bgcolor="#f5873c">
+	 <td align="center"><input size=15 name=FinalExam defaultValue=""></td>
+	 <td align="center"><input size=5 name=Grade5 defaultValue=""></td>
+	 <td align="center"><input size=5 name=Percent5 defaultValue=""></td>
+	</tr>
+
+	<!-- Row 9 -->
+	<tr bgcolor="#f5873c">
+	 <td colspan=3 align="center">&nbsp;</td>
+	</tr>
+
+	<!-- Row 10 -->
+	<tr bgcolor="#f5873c">
+	 <td colspan=2 align="center"><input type=button name=Calculate value="Calculate Course Grade" onClick="calc()"></td>
+	 <td colspan=1 align="center"><input type=reset name=OverallReset value="Reset"></td>
+	</tr>
+
+	<!-- Row 11 -->
+	<tr bgcolor="#f5873c">
+	 <td colspan=3 align="center">&nbsp;</td>
+	</tr>
+
+	<!-- Row 12 -->
+	<tr bgcolor="#f5873c">
+	 <td align="center">Grade</td>
+	 <td colspan=2 align="center">Course Average for Listed Assignments</td>
+	</tr>
+
+	<!-- Row 13 -->
+	<tr bgcolor="#f5873c">
+	 <td align="center"><input size=5 name=TotalPercent defaultValue=""></td>
+	 <td colspan=2 align="center"><input size=5 name=Grade defaultValue=""></td>
+	</tr>
+
+	<!-- Row 14 -->
+	<tr bgcolor="#f5873c">
+	 <td colspan=3 align="center">&nbsp;</td>
+	</tr>
+
+</table>
+</form>
+<p>&nbsp;<p><hr><font size="-1">Source: The Mercer University Weighted Average Grade Calculator designed by Jennifer M. Cole (CLA '03), who majored in Christianity and Mathematics.</font>
+</center>
+<script src="script.js"></script>
+</body>
+</html>
